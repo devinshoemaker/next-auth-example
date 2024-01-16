@@ -7,16 +7,13 @@ export async function register(
   prevState: string | undefined,
   formData: FormData
 ) {
-  try {  
+  try {
     await signUp(formData);
-  } catch (e) {
-    console.log(e)
+  } catch (error) {
     return "Something went wrong.";
   }
-  // catch and throw?
 
-  await authenticate(undefined, formData);
-  // catch and throw?
+  return await authenticate(undefined, formData);
 }
 
 export async function authenticate(

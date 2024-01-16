@@ -14,16 +14,15 @@ async function getUser(email: string) {
       password: true,
     },
   });
-  
+
   return user;
 }
 
 export async function signUp(formData: FormData) {
-  // validate email and password (zod?)
   const parsedCredentials = z
     .object({ email: z.string().email(), password: z.string().min(6) })
     .safeParse(Object.fromEntries(formData));
-  // throw if not safe?
+
   if (parsedCredentials.success) {
     const { email, password } = parsedCredentials.data;
 
@@ -42,7 +41,7 @@ export async function signUp(formData: FormData) {
       },
     });
   } else {
-    console.log(parsedCredentials.error);
+    throw parsedCredentials.error;
   }
 }
 
@@ -73,7 +72,6 @@ export const { auth, signIn, signOut } = NextAuth({
           }
         }
 
-        console.log("Invalid credentials");
         return null;
       },
     }),
