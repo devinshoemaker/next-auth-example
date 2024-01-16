@@ -11,7 +11,10 @@
     "db:studio": "prisma studio",
     "db:reset": "prisma migrate reset && prisma db seed",
     "docker:up": "docker compose up -d",
-    "docker:down": "docker compose down"
+    "docker:down": "docker compose down",
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui",
+    "test:debug": "npx playwright test --debug"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
