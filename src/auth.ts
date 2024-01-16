@@ -26,9 +26,16 @@ export async function signUp(formData: FormData) {
   if (parsedCredentials.success) {
     const { email, password } = parsedCredentials.data;
 
-    // check for existing user
+    const user = await prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+    });
 
-    // add user to database
+    if (user) {
+      throw new Error("Email address already exists.");
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
     await prisma.user.create({
       data: {
@@ -41,7 +48,7 @@ export async function signUp(formData: FormData) {
       },
     });
   } else {
-    throw parsedCredentials.error;
+    throw new Error("Invalid credentials.");
   }
 }
 

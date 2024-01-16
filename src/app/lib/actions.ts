@@ -10,7 +10,11 @@ export async function register(
   try {
     await signUp(formData);
   } catch (error) {
-    return "Something went wrong.";
+    if (error instanceof Error) {
+      return error.message;
+    }
+
+    return "Something went wrong."
   }
 
   return await authenticate(undefined, formData);
