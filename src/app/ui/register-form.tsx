@@ -1,15 +1,17 @@
 "use client";
 
-import { authenticate, register } from "@/app/lib/actions";
-import { lusitana } from "@/app/ui/fonts";
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import {
   AtSymbolIcon,
-  KeyIcon,
   ExclamationCircleIcon,
+  KeyIcon,
 } from "@heroicons/react/24/outline";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
-import { Button } from "./button";
 import { useFormState, useFormStatus } from "react-dom";
+
+import { register } from "@/app/lib/actions";
+import { lusitana } from "@/app/ui/fonts";
+
+import { Button } from "./button";
 
 export default function RegisterForm() {
   const [errorMessage, dispatch] = useFormState(register, undefined);
