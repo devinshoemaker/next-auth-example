@@ -27,7 +27,6 @@ export async function signUp(formData: FormData) {
   const parsedCredentials = z
     .object({ email: z.string().email(), password: z.string().min(6) })
     .safeParse(Object.fromEntries(formData));
-    console.log(formData);
   // throw if not safe?
   if (parsedCredentials.success) {
     
@@ -49,7 +48,6 @@ export async function signUp(formData: FormData) {
     });
   } else {
     console.log(parsedCredentials.error);
-    
   }
 }
 
