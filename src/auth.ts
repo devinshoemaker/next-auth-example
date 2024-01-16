@@ -6,20 +6,16 @@ import { z } from "zod";
 import { authConfig } from "./auth.config";
 
 async function getUser(email: string) {
-  try {
-    const user = await prisma.user.findUnique({
-      where: {
-        email: email,
-      },
-      include: {
-        password: true,
-      },
-    });
-    return user;
-  } catch (error) {
-    console.error("Failed to fetch user:", error);
-    throw new Error("Failed to fetch user.");
-  }
+  const user = await prisma.user.findUnique({
+    where: {
+      email: email,
+    },
+    include: {
+      password: true,
+    },
+  });
+  
+  return user;
 }
 
 export async function signUp(formData: FormData) {
@@ -29,7 +25,6 @@ export async function signUp(formData: FormData) {
     .safeParse(Object.fromEntries(formData));
   // throw if not safe?
   if (parsedCredentials.success) {
-    
     const { email, password } = parsedCredentials.data;
 
     // check for existing user
@@ -64,7 +59,9 @@ export const { auth, signIn, signOut } = NextAuth({
           const { email, password } = parsedCredentials.data;
 
           const user = await getUser(email);
-          if (!user || !user.password) return null;
+          if (!user || !user.password) {
+            return null;
+          }
 
           const passwordsMatch = await bcrypt.compare(
             password,

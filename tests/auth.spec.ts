@@ -53,4 +53,24 @@ test.describe("Auth", () => {
     await page.getByRole("button", { name: "Log in" }).click();
     await expect(page).toHaveURL(/.*dashboard/);
   });
+
+  test("should display error if login credentials are invalid and the user does not exist", async ({ page }) => {
+    await page.goto("/login");
+    await page
+      .getByPlaceholder("Enter your email address")
+      .fill(email);
+    await page.getByPlaceholder("Enter password").fill(faker.internet.password());
+    await page.getByRole("button", { name: "Log in" }).click();
+    await expect(page.getByText(/Invalid Credentials/i)).toBeVisible();
+  });
+
+  test("should display error if login credentials are invalid and the user does exist", async ({ page }) => {
+    await page.goto("/login");
+    await page
+      .getByPlaceholder("Enter your email address")
+      .fill('rachel@remix.run');
+    await page.getByPlaceholder("Enter password").fill(faker.internet.password());
+    await page.getByRole("button", { name: "Log in" }).click();
+    await expect(page.getByText(/Invalid Credentials/i)).toBeVisible();
+  });
 });
