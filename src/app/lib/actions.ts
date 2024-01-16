@@ -1,7 +1,23 @@
 "use server";
 
-import { signIn } from "@/auth";
+import { signIn, signUp } from "@/auth";
 import { AuthError } from "next-auth";
+
+export async function register(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {  
+    await signUp(formData);
+  } catch (e) {
+    console.log(e)
+    return "Something went wrong.";
+  }
+  // catch and throw?
+
+  await authenticate(undefined, formData);
+  // catch and throw?
+}
 
 export async function authenticate(
   prevState: string | undefined,

@@ -22,6 +22,37 @@ async function getUser(email: string) {
   }
 }
 
+export async function signUp(formData: FormData) {
+  // validate email and password (zod?)
+  const parsedCredentials = z
+    .object({ email: z.string().email(), password: z.string().min(6) })
+    .safeParse(Object.fromEntries(formData));
+    console.log(formData);
+  // throw if not safe?
+  if (parsedCredentials.success) {
+    
+    const { email, password } = parsedCredentials.data;
+
+    // check for existing user
+
+    // add user to database
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await prisma.user.create({
+      data: {
+        email,
+        password: {
+          create: {
+            hash: hashedPassword,
+          },
+        },
+      },
+    });
+  } else {
+    console.log(parsedCredentials.error);
+    
+  }
+}
+
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
