@@ -1,20 +1,20 @@
 "use client";
 
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import {
   AtSymbolIcon,
-  KeyIcon,
   ExclamationCircleIcon,
+  KeyIcon,
 } from "@heroicons/react/24/outline";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { useFormState, useFormStatus } from "react-dom";
 
-import { authenticate } from "@/app/lib/actions";
+import { register } from "@/app/lib/actions";
 import { lusitana } from "@/app/ui/fonts";
 
-import { Button } from "./button";
+import { Button } from "../ui/button";
 
-export default function LoginForm() {
-  const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+export default function RegisterForm() {
+  const [errorMessage, dispatch] = useFormState(register, undefined);
 
   return (
     <form action={dispatch} className="space-y-3">
@@ -63,7 +63,7 @@ export default function LoginForm() {
             </div>
           </div>
         </div>
-        <LoginButton />
+        <Register />
         <div
           className="flex h-8 items-end space-x-1"
           aria-live="polite"
@@ -81,7 +81,7 @@ export default function LoginForm() {
   );
 }
 
-function LoginButton() {
+function Register() {
   const { pending } = useFormStatus();
 
   return (
