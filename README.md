@@ -23,6 +23,14 @@ This project is an example application for using NextAuth with the credentials p
 npm install
 ```
 
+### Configure Environment Variables
+
+```
+cp .env.example .env.local
+```
+
+Replace `AUTH_SECRET`.
+
 ### Run Setup Script
 
 **Note**: you must have Docker installed and running.
