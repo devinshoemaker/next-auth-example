@@ -1,6 +1,6 @@
 import { type VariantProps } from "class-variance-authority";
 import Link, { LinkProps } from "next/link";
-import * as React from "react";
+import React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -24,4 +24,4 @@ const LinkButton = (props: LinkButtonProps) => {
 };
 LinkButton.displayName = "LinkButton";
 
-export { buttonVariants, LinkButton };
+export { LinkButton, buttonVariants };
