@@ -95,7 +95,7 @@ jobs:
           npx playwright install --with-deps;
 
       - name: Docker Compose
-        run: npm run docker:up
+        run: npm run docker:up && sleep 3
 
       - name: Setup Database
         run: npx prisma migrate reset --force
