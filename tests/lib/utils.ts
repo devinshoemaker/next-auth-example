@@ -1,6 +1,7 @@
-import prisma from "@/db";
 import { expect, Page } from "@playwright/test";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+
+import prisma from "@/db";
 
 export async function visitAndCheck(url: string, page: Page) {
   await page.goto(url);

@@ -1,7 +1,8 @@
 "use server";
 
-import { signIn, signUp } from "@/auth";
 import { AuthError } from "next-auth";
+
+import { signIn, signUp } from "@/auth";
 
 export async function register(
   prevState: string | undefined,

@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { expect, test } from "@playwright/test";
+
 import { cleanupUser } from "./lib/utils";
 
 test.describe("Auth", () => {

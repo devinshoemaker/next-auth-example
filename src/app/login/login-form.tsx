@@ -1,11 +1,11 @@
 "use client";
 
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import {
   AtSymbolIcon,
   KeyIcon,
   ExclamationCircleIcon,
 } from "@heroicons/react/24/outline";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { useFormState, useFormStatus } from "react-dom";
 
 import { authenticate } from "@/app/lib/actions";
