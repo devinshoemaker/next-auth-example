@@ -26,7 +26,7 @@ npm install
 ### Configure Environment Variables
 
 ```
-cp .env.example .env.local
+cp .env.example .env
 ```
 
 Replace `AUTH_SECRET`.
