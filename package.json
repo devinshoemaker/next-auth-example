@@ -15,6 +15,7 @@
     "docker:down": "docker compose down",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "setup": "npm run docker:up && prisma db seed",
     "test": "npx playwright test",
     "test:ui": "npx playwright test --ui",
     "test:debug": "npx playwright test --debug"
