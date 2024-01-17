@@ -5,7 +5,7 @@ import { AuthError } from "next-auth";
 
 export async function register(
   prevState: string | undefined,
-  formData: FormData
+  formData: FormData,
 ) {
   try {
     await signUp(formData);
@@ -14,7 +14,7 @@ export async function register(
       return error.message;
     }
 
-    return "Something went wrong."
+    return "Something went wrong.";
   }
 
   return await authenticate(undefined, formData);
@@ -22,7 +22,7 @@ export async function register(
 
 export async function authenticate(
   prevState: string | undefined,
-  formData: FormData
+  formData: FormData,
 ) {
   try {
     await signIn("credentials", formData);

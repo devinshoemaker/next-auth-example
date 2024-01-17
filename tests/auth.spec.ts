@@ -54,33 +54,45 @@ test.describe("Auth", () => {
     await expect(page).toHaveURL(/.*dashboard/);
   });
 
-  test("should display error if login credentials are invalid and the user does not exist", async ({ page }) => {
+  test("should display error if login credentials are invalid and the user does not exist", async ({
+    page,
+  }) => {
     await page.goto("/login");
+    await page.getByPlaceholder("Enter your email address").fill(email);
     await page
-      .getByPlaceholder("Enter your email address")
-      .fill(email);
-    await page.getByPlaceholder("Enter password").fill(faker.internet.password());
+      .getByPlaceholder("Enter password")
+      .fill(faker.internet.password());
     await page.getByRole("button", { name: "Log in" }).click();
     await expect(page.getByText(/Invalid Credentials./i)).toBeVisible();
   });
 
-  test("should display error if login credentials are invalid and the user does exist", async ({ page }) => {
+  test("should display error if login credentials are invalid and the user does exist", async ({
+    page,
+  }) => {
     await page.goto("/login");
     await page
       .getByPlaceholder("Enter your email address")
-      .fill('rachel@remix.run');
-    await page.getByPlaceholder("Enter password").fill(faker.internet.password());
+      .fill("rachel@remix.run");
+    await page
+      .getByPlaceholder("Enter password")
+      .fill(faker.internet.password());
     await page.getByRole("button", { name: "Log in" }).click();
     await expect(page.getByText(/Invalid Credentials./i)).toBeVisible();
   });
 
-  test("should display error if the user attempts to register with an existing email", async ({ page }) => {
+  test("should display error if the user attempts to register with an existing email", async ({
+    page,
+  }) => {
     await page.goto("/register");
     await page
       .getByPlaceholder("Enter your email address")
-      .fill('rachel@remix.run');
-    await page.getByPlaceholder("Enter password").fill(faker.internet.password());
+      .fill("rachel@remix.run");
+    await page
+      .getByPlaceholder("Enter password")
+      .fill(faker.internet.password());
     await page.getByRole("button", { name: "Log in" }).click();
-    await expect(page.getByText(/Email address already exists./i)).toBeVisible();
+    await expect(
+      page.getByText(/Email address already exists./i),
+    ).toBeVisible();
   });
 });
