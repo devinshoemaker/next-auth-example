@@ -30,28 +30,24 @@ test.describe("Auth", () => {
     page,
   }) => {
     await page.goto("/dashboard");
-    await expect(page.getByText("Please log in to continue")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Log In" })).toBeVisible();
     await expect(page).toHaveURL(/.*login/);
   });
 
   test("should redirect to dashboard after logging in", async ({ page }) => {
     await page.goto("/login");
-    await page
-      .getByPlaceholder("Enter your email address")
-      .fill("rachel@remix.run");
-    await page.getByPlaceholder("Enter password").fill("racheliscool");
-    await page.getByRole("button", { name: "Log in" }).click();
+    await page.getByPlaceholder("name@example.com").fill("rachel@remix.run");
+    await page.getByPlaceholder("password").fill("racheliscool");
+    await page.getByRole("button", { name: "Sign In with Email" }).click();
     await expect(page).toHaveURL(/.*dashboard/);
   });
 
   test("should redirect to dashboard after signing up", async ({ page }) => {
     shouldDeleteUser = true;
     await page.goto("/register");
-    await page.getByPlaceholder("Enter your email address").fill(email);
-    await page
-      .getByPlaceholder("Enter password")
-      .fill(faker.internet.password());
-    await page.getByRole("button", { name: "Log in" }).click();
+    await page.getByPlaceholder("name@example.com").fill(email);
+    await page.getByPlaceholder("password").fill(faker.internet.password());
+    await page.getByRole("button", { name: "Sign Up with Email" }).click();
     await expect(page).toHaveURL(/.*dashboard/);
   });
 
@@ -59,11 +55,9 @@ test.describe("Auth", () => {
     page,
   }) => {
     await page.goto("/login");
-    await page.getByPlaceholder("Enter your email address").fill(email);
-    await page
-      .getByPlaceholder("Enter password")
-      .fill(faker.internet.password());
-    await page.getByRole("button", { name: "Log in" }).click();
+    await page.getByPlaceholder("name@example.com").fill(email);
+    await page.getByPlaceholder("password").fill(faker.internet.password());
+    await page.getByRole("button", { name: "Sign In with Email" }).click();
     await expect(page.getByText(/Invalid Credentials./i)).toBeVisible();
   });
 
@@ -71,13 +65,9 @@ test.describe("Auth", () => {
     page,
   }) => {
     await page.goto("/login");
-    await page
-      .getByPlaceholder("Enter your email address")
-      .fill("rachel@remix.run");
-    await page
-      .getByPlaceholder("Enter password")
-      .fill(faker.internet.password());
-    await page.getByRole("button", { name: "Log in" }).click();
+    await page.getByPlaceholder("name@example.com").fill("rachel@remix.run");
+    await page.getByPlaceholder("password").fill(faker.internet.password());
+    await page.getByRole("button", { name: "Sign In with Email" }).click();
     await expect(page.getByText(/Invalid Credentials./i)).toBeVisible();
   });
 
@@ -85,13 +75,9 @@ test.describe("Auth", () => {
     page,
   }) => {
     await page.goto("/register");
-    await page
-      .getByPlaceholder("Enter your email address")
-      .fill("rachel@remix.run");
-    await page
-      .getByPlaceholder("Enter password")
-      .fill(faker.internet.password());
-    await page.getByRole("button", { name: "Log in" }).click();
+    await page.getByPlaceholder("name@example.com").fill("rachel@remix.run");
+    await page.getByPlaceholder("password").fill(faker.internet.password());
+    await page.getByRole("button", { name: "Sign Up with Email" }).click();
     await expect(
       page.getByText(/Email address already exists./i),
     ).toBeVisible();
