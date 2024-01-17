@@ -15,7 +15,6 @@ import { authenticate } from "../lib/actions";
 export default function LoginPage() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
   const { pending } = useFormStatus();
-  const unusedVar
 
   return (
     <main className="min-h-screen flex items-center justify-center">
@@ -100,16 +99,5 @@ export default function LoginPage() {
         </p>
       </div>
     </main>
-  );
-}
-
-function LoginButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <Button disabled={pending}>
-      {pending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-      Sign In with Email
-    </Button>
   );
 }
