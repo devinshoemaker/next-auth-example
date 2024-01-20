@@ -17,7 +17,7 @@ export default function LoginPage() {
 
   return (
     <main className="min-h-screen flex items-center justify-center">
-      <div className="max-w-sm space-y-4">
+      <div className="max-w-sm w-full space-y-4">
         <div id="header" className="flex flex-col space-y-2 text-center">
           <h1 className="text-2xl font-semibold tracking-tight">
             Create an Account
