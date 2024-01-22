@@ -55,7 +55,7 @@ export default function SideMenu() {
       {isMenuOpen && (
         <button
           id="tinted-overlay"
-          className={`fixed inset-0 bg-black/80 ${isMenuOpen ? "animate-in fade-in-0" : ""} ${!isMenuOpen ? "animate-out fade-out-0" : ""}`}
+          className={`md:hidden fixed inset-0 bg-black/80 ${isMenuOpen ? "animate-in fade-in-0" : ""} ${!isMenuOpen ? "animate-out fade-out-0" : ""}`}
           onClick={() => setIsMenuOpen(false)}
         />
       )}
