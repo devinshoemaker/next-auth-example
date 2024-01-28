@@ -1,12 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { LinkButton } from "@/components/ui/link-button";
 import { authenticate } from "@/lib/actions";
 import { cn } from "@/lib/utils";
 
@@ -61,7 +61,9 @@ export default function LoginPage() {
                 )}
                 Sign In with Email
               </Button>
-              <LinkButton href="/register">Sign Up</LinkButton>
+              <Button>
+                <Link href="/register">Sign Up</Link>
+              </Button>
               <div
                 className="flex h-8 items-end space-x-1"
                 aria-live="polite"
