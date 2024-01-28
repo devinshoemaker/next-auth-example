@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { LinkButton } from "@/components/ui/link-button";
 import { register } from "@/lib/actions";
 import { cn } from "@/lib/utils";
 
@@ -64,7 +63,9 @@ export default function LoginPage() {
                 )}
                 Sign Up with Email
               </Button>
-              <LinkButton href="/login">Sign In</LinkButton>
+              <Button>
+                <Link href="/login">Sign In</Link>
+              </Button>
               <div
                 className="flex h-8 items-end space-x-1"
                 aria-live="polite"
