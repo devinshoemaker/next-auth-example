@@ -1,11 +1,11 @@
-import bcrypt from "bcrypt";
-import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials";
-import { z } from "zod";
+import bcrypt from 'bcrypt';
+import NextAuth from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+import { z } from 'zod';
 
-import prisma from "@/db";
+import prisma from '@/db';
 
-import { authConfig } from "./auth.config";
+import { authConfig } from './auth.config';
 
 async function getUser(email: string) {
   const user = await prisma.user.findUnique({
@@ -35,7 +35,7 @@ export async function signUp(formData: FormData) {
     });
 
     if (user) {
-      throw new Error("Email address already exists.");
+      throw new Error('Email address already exists.');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -50,7 +50,7 @@ export async function signUp(formData: FormData) {
       },
     });
   } else {
-    throw new Error("Invalid credentials.");
+    throw new Error('Invalid credentials.');
   }
 }
 
