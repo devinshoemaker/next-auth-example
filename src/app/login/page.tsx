@@ -55,14 +55,19 @@ export default function LoginPage() {
                 />
               </div>
 
-              <Button disabled={pending}>
+              <Button type="submit" disabled={pending}>
                 {pending && (
                   <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                 )}
                 Sign In with Email
               </Button>
-              <Button>
-                <Link href="/register">Sign Up</Link>
+              <Button type="button" className="p-0">
+                <Link
+                  href="/register"
+                  className="w-full h-full flex items-center justify-center"
+                >
+                  Sign Up
+                </Link>
               </Button>
               <div
                 className="flex h-8 items-end space-x-1"
