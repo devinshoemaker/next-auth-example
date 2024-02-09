@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { logout } from "@/lib/actions";
+import { logout } from '@/lib/actions';
 
-import { Button } from "./ui/button";
+import { Button } from './ui/button';
 
 export default function SideMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,7 +38,7 @@ export default function SideMenu() {
       <div
         id="side-menu"
         className={`absolute md:relative inset-y-0 w-64 p-4 flex flex-col space-y-4 transform ${
-          isMenuOpen ? "" : "-translate-x-full"
+          isMenuOpen ? '' : '-translate-x-full'
         } md:translate-x-0 transition duration-200 ease-in-out z-10 bg-background border-r`}
       >
         <form action={logout}>
@@ -55,7 +55,7 @@ export default function SideMenu() {
       {isMenuOpen && (
         <button
           id="tinted-overlay"
-          className={`md:hidden fixed inset-0 bg-black/80 ${isMenuOpen ? "animate-in fade-in-0" : ""} ${!isMenuOpen ? "animate-out fade-out-0" : ""}`}
+          className={`md:hidden fixed inset-0 bg-black/80 ${isMenuOpen ? 'animate-in fade-in-0' : ''} ${!isMenuOpen ? 'animate-out fade-out-0' : ''}`}
           onClick={() => setIsMenuOpen(false)}
         />
       )}

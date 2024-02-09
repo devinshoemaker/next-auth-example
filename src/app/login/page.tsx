@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useFormState, useFormStatus } from "react-dom";
+import Link from 'next/link';
+import { useFormState, useFormStatus } from 'react-dom';
 
-import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/ui/icons";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { authenticate } from "@/lib/actions";
-import { cn } from "@/lib/utils";
+import { Button } from '@/components/ui/button';
+import { Icons } from '@/components/ui/icons';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { authenticate } from '@/lib/actions';
+import { cn } from '@/lib/utils';
 
 export default function LoginPage() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
@@ -21,7 +21,7 @@ export default function LoginPage() {
           <h1 className="text-2xl font-semibold tracking-tight">Log In</h1>
         </div>
 
-        <div id="login-form" className={cn("grid gap-6")}>
+        <div id="login-form" className={cn('grid gap-6')}>
           <form action={dispatch}>
             <div className="grid gap-2">
               <div className="grid gap-1">
